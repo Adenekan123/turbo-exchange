@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Header from "../components/Header";
 import Footer from "../components/footer";
 import Banner from "../components/Banner";
@@ -24,9 +24,13 @@ const BannerContent = () => (
 );
 
 const Dashboard = () => {
+  const [toggleMenu, setToggleMenu] = useReducer(
+    (toggleMenu) => !toggleMenu,
+    false
+  );
   return (
     <>
-      <Header />
+      <Header toggleMenu={toggleMenu} setToggleMenu={setToggleMenu} />
       <Banner
         type="small"
         content={BannerContent}
